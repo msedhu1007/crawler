@@ -1,0 +1,8 @@
+tests/openJobLinksTest.class
+configuration/Configuration.class
+pages/HomePage.class
+configuration/ConfigurationManager.class
+utils/PageFactory.class
+utils/BaseTest.class
+utils/PlaywrightManager.class
+utils/PlaywrightFactory.class
