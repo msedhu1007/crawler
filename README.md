@@ -1,6 +1,6 @@
 # crawler
 
-Java Web Crawler for QA/SDET/Test Automation Job Listings
+** # Java Web Crawler for QA/SDET/Test Automation Job Listings # **
 
 This is a Java-based web crawler designed to search for job postings related to Quality Assurance (QA), Software Development Engineer in Test (SDET), and Test Automation roles. The crawler scans through the web pages of various job search engines and job boards, extracts the relevant job listings, and presents them to the user.
 
