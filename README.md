@@ -22,6 +22,16 @@ The crawler can be customized to search for other job titles or to search differ
 
 The JobCrawler class contains the main logic for extracting job listings from web pages. The search method can be modified to search for different job titles or to search different websites. The HomePage class contains the main logic for extracting job listings from web pages.
 
+**Tech**
+
+Crawler uses a number of open source libraries to work properly:
+
+- [Java] 
+- [JUnit 5] 
+- [Playwright] 
+- [Jsoup] 
+
+
 **Credits**
 
 This project was developed by Sedhu as part of a job seeking challenge.
