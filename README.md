@@ -36,5 +36,9 @@ Crawler uses a number of open source libraries to work properly:
 
 This project was developed by Sedhu as part of a job seeking challenge.
 
+## License
+
+MIT
+
 ------------
 
