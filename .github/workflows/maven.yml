@@ -21,6 +21,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          
+      - uses: actions/checkout@v2
       - name: Run commands in the external repository
         run: cd playwright-java/examples/  # Change to the directory where the external repository was cloned
 
