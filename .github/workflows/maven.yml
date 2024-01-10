@@ -29,7 +29,7 @@ jobs:
           ls -R  # List contents of the current directory 
 
       - name: Change to the external repository directory
-        run: cd playwright-java-docker-test/examples/  # Change to the directory where the external repository was cloned    
+        run: cd examples/  # Change to the directory where the external repository was cloned    
 
       - name: Build & Install
         run: mvn -B install -D skipTests --no-transfer-progress
