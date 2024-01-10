@@ -37,3 +37,13 @@ jobs:
       - name: Run tests
         run: HOME=/root mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
         working-directory: examples/  # Set the working directory to your project
+
+      - name: Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Maven Tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
+          retention-days: 10  
