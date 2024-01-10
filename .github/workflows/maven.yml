@@ -38,6 +38,11 @@ jobs:
         run: HOME=/root mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
         working-directory: examples/  # Set the working directory to your project
 
+      - name: Copy PNG Files to Temporary Directory
+        run: |
+         # Use 'find' to locate all PNG files in the current directory and its subdirectories
+         find . -type f -name "*.png" -exec cp {} temp-artifacts/ \;
+         shell: bash
       - name: Create ZIP Archive
         run: |
          cd temp-artifacts/
