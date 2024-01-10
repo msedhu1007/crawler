@@ -36,4 +36,4 @@ jobs:
 
       - name: Run tests
         run: mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
-        working-directory: playwright-java/examples/  # Set the working directory to your project
+        working-directory: examples/  # Set the working directory to your project
