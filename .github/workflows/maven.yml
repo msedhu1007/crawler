@@ -38,13 +38,14 @@ jobs:
         run: HOME=/root mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
         working-directory: examples/  # Set the working directory to your project
 
-      - name: Upload PNG Files as Artifacts
+      - name: Create ZIP Archive
         run: |
-          find . -type f -name "*.png" -exec cp {} temp-artifacts/ \;
+         cd temp-artifacts/
+         zip -r png-artifacts.zip .
         shell: bash
 
-      - name: Upload Artifacts
+      - name: Upload ZIP Archive
         uses: actions/upload-artifact@v2
         with:
          name: png-artifacts  # Specify a name for the artifact
-         path: temp-artifacts  # Upload all files in the workspace
+         path: temp-artifacts/png-artifacts.zip  # Upload the ZIP archive
