@@ -40,11 +40,11 @@ jobs:
 
       - name: Upload PNG Files as Artifacts
         run: |
-         find . -type f -name "*.png" -exec cp {} $GITHUB_WORKSPACE/ \;
+          find . -type f -name "*.png" -exec cp {} temp-artifacts/ \;
         shell: bash
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
          name: png-artifacts  # Specify a name for the artifact
-         path: $GITHUB_WORKSPACE  # Upload all files in the workspace
+         path: temp-artifacts  # Upload all files in the workspace
