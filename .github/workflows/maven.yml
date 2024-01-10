@@ -38,8 +38,13 @@ jobs:
         run: HOME=/root mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
         working-directory: examples/  # Set the working directory to your project
 
-      - name: Upload Screenshots as Artifacts
+      - name: Upload PNG Files as Artifacts
+        run: |
+         find . -type f -name "*.png" -exec cp {} $GITHUB_WORKSPACE/ \;
+        shell: bash
+
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-         name: screenshots  # Specify a name for the artifact
-         path: .  # Specify the directory where the screenshots are saved
+         name: png-artifacts  # Specify a name for the artifact
+         path: $GITHUB_WORKSPACE  # Upload all files in the workspace
