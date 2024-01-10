@@ -38,12 +38,8 @@ jobs:
         run: HOME=/root mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
         working-directory: examples/  # Set the working directory to your project
 
-      - name: Report
-        uses: dorny/test-reporter@v1
-        if: always()
+      - name: Upload Screenshots as Artifacts
+        uses: actions/upload-artifact@v2
         with:
-          name: Maven Tests
-          path: target/surefire-reports/*.xml
-          reporter: java-junit
-          fail-on-error: true
-          retention-days: 10  
+         name: screenshots  # Specify a name for the artifact
+         path: .  # Specify the directory where the screenshots are saved
