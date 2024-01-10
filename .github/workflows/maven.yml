@@ -12,6 +12,13 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: '17'
+
+    - name: Set up X11 forwarding
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y x11-apps
+      env:
+        DISPLAY: ${{ secrets.DISPLAY }}
     - name: Build & Install
       run: mvn -B install -D skipTests --no-transfer-progress
     - name: Install Playwright
