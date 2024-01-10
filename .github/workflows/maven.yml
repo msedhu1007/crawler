@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-         repository: msedhu1007/playwright-java-docker-test/examples  # Replace with the URL or path to the external repository
+         repository: msedhu1007/playwright-java-docker-test  # Replace with the URL or path to the external repository
          ref: main  # Replace with the branch or tag you want to clone
       - name: Checkout code from external repository
       
