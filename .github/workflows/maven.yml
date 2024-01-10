@@ -35,5 +35,5 @@ jobs:
         run: mvn -B install -D skipTests --no-transfer-progress
 
       - name: Run tests
-        run: mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
+        run: HOME=/root mvn compile exec:java -Dexec.mainClass=org.example.PageScreenshot
         working-directory: examples/  # Set the working directory to your project
