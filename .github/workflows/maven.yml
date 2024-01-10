@@ -23,6 +23,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Change to the external repository directory
+        run: cd playwright-java/examples/  # Change to the directory where the external repository was cloned    
+
       - name: Build & Install
         run: mvn -B install -D skipTests --no-transfer-progress
 
