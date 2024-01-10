@@ -19,7 +19,8 @@ jobs:
 
       - name: Setup Java
         uses: actions/setup-java@v2
-        with:
+         with:
+          distribution: 'temurin'
           java-version: '17'
 
       - name: Build & Install
