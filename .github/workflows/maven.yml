@@ -13,11 +13,11 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
     - name: Build & Install
-      run: xvfb-run -a mvn -B install -D skipTests --no-transfer-progress
+      run: mvn -B install -D skipTests --no-transfer-progress
     - name: Install Playwright
       run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
     - name: Run tests
-      run: mvn test
+      run: xvfb-run -a mvn test
       env:
         # This might depend on your test-runner
         PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
