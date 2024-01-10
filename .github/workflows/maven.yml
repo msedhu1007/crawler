@@ -24,7 +24,7 @@ jobs:
           java-version: '17'
 
       - name: Initialize submodules
-        run: git submodule update --init --recursive
+        run: git playwright-java/examples/ update --init --recursive
 
       - name: List contents of workspace
         run: ls -R    
