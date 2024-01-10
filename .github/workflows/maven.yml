@@ -24,7 +24,7 @@ jobs:
           java-version: '17'
 
       - name: List contents of workspace
-        run: ls -R    
+        run: pwd   
 
       - name: Change to the external repository directory
         run: cd playwright-java-docker-test/examples/  # Change to the directory where the external repository was cloned    
