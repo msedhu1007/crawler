@@ -12,6 +12,11 @@ jobs:
       image: mcr.microsoft.com/playwright/java:v1.40.0-jammy
     steps:
       - uses: actions/checkout@v3
+        with:
+         repository: https://github.com/msedhu1007/playwright-java-docker-test/tree/main/examples  # Replace with the URL or path to the external repository
+         ref: main  # Replace with the branch or tag you want to clone
+      - name: Checkout code from external repository
+      
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
