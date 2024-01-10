@@ -5,29 +5,20 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  test:
-    timeout-minutes: 60
+  playwright:
+    name: 'Playwright Tests'
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success'
+    container:
+      image: mcr.microsoft.com/playwright/java:v1.40.0-jammy
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-
-    - name: Set up X11 forwarding
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y x11-apps
-      env:
-        DISPLAY: ${{ secrets.DISPLAY }}
-    - name: Build & Install
-      run: mvn -B install -D skipTests --no-transfer-progress
-    - name: Install Playwright
-      run: mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install --with-deps"
-    - name: Run tests
-      run: xvfb-run -a mvn test
-      env:
-        # This might depend on your test-runner
-        PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build & Install
+        run: mvn -B install -D skipTests --no-transfer-progress
+      - name: Run tests
+        run: xvfb-run -a mvn test
+        env:
+          HOME: /root
