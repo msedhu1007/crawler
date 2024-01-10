@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 jobs:
   playwright:
     name: 'Playwright Tests'
@@ -11,24 +11,21 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright/java:v1.40.0-jammy
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
-         repository: msedhu1007/playwright-java-docker-test  # Replace with the URL or path to the external repository
-         ref: main  # Replace with the branch or tag you want to clone
-      - name: Checkout code from external repository
-      
-      - uses: actions/setup-java@v3
+          repository: msedhu1007/playwright-java-docker-test  # Replace with the URL or path to the external repository
+          ref: main  # Replace with the branch or tag you want to clone
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
         with:
-          distribution: 'temurin'
           java-version: '17'
-          
-      - uses: actions/checkout@v2
-      - name: Run commands in the external repository
-        run: cd playwright-java/examples/  # Change to the directory where the external repository was cloned
 
       - name: Build & Install
         run: mvn -B install -D skipTests --no-transfer-progress
+        working-directory: playwright-java/examples/  # Set the working directory to your project
+
       - name: Run tests
-        run: xvfb-run -a mvn test
-        env:
-          HOME: /root
+        run: mvn test
+        working-directory: playwright-java/examples/  # Set the working directory to your project
